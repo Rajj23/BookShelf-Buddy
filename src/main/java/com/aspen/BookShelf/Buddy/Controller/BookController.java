@@ -1,5 +1,8 @@
 package com.aspen.BookShelf.Buddy.Controller;
 
+import com.aspen.BookShelf.Buddy.Dto.Book.BookCreateRequest;
+import com.aspen.BookShelf.Buddy.Dto.Book.BookResponse;
+import com.aspen.BookShelf.Buddy.Dto.Book.BookUpdateRequest;
 import com.aspen.BookShelf.Buddy.Entity.Book;
 import com.aspen.BookShelf.Buddy.Exception.ResourceNotFoundException;
 import com.aspen.BookShelf.Buddy.Service.BookService;
@@ -19,38 +22,38 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/create")
-    public ResponseEntity<Book> createBook(@RequestBody Book book){
+    public ResponseEntity<BookResponse> createBook(@RequestBody BookCreateRequest book){
         return new  ResponseEntity<>(bookService.createBook(book), HttpStatus.CREATED);
     }
 
     @GetMapping("/get/id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable UUID id) throws ResourceNotFoundException {
+    public ResponseEntity<BookResponse> getBookById(@PathVariable UUID id) throws ResourceNotFoundException {
         return new ResponseEntity<>(bookService.getBookById(id),HttpStatus.OK);
     }
 
     @GetMapping("/get")
-    public ResponseEntity<List<Book>> getAllBooks(){
+    public ResponseEntity<List<BookResponse>> getAllBooks(){
         return new ResponseEntity<>(bookService.getAllBooks(),HttpStatus.OK);
     }
 
     @GetMapping("/get/titles/{title}")
-    public ResponseEntity<Book> getBookByTitle(@PathVariable String title) throws ResourceNotFoundException {
+    public ResponseEntity<BookResponse> getBookByTitle(@PathVariable String title) throws ResourceNotFoundException {
         return new ResponseEntity<>(bookService.getBookByTitle(title),HttpStatus.OK);
     }
 
     @GetMapping("/get/author/{author}")
-    public ResponseEntity<Book> getBookByAuthor(@PathVariable String author){
+    public ResponseEntity<BookResponse> getBookByAuthor(@PathVariable String author){
         return new ResponseEntity<>(bookService.getBookByAuthor(author),HttpStatus.OK);
     }
 
     @GetMapping("/get/genre/{genre}")
-    public ResponseEntity<Book> getBookByGenre(@PathVariable String genre){
+    public ResponseEntity<BookResponse> getBookByGenre(@PathVariable String genre){
         return new ResponseEntity<>(bookService.getBookByGenre(genre),HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable UUID id,@RequestBody Book book) throws ResourceNotFoundException {
-        return new ResponseEntity<>(bookService.updateBook(id,book),HttpStatus.OK);
+    public ResponseEntity<BookResponse> updateBook(@RequestBody BookUpdateRequest book) throws ResourceNotFoundException {
+        return new ResponseEntity<>(bookService.updateBook(book),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

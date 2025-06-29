@@ -49,6 +49,11 @@ public class BookEntryController {
         return new ResponseEntity<>(bookEntryService.getBookEntriesByStatus(status),HttpStatus.OK);
     }
 
+    @GetMapping("/get/wishlist/{userId}")
+    public ResponseEntity<List<BookEntryResponse>> getWishlist(@PathVariable UUID userId) throws ResourceNotFoundException {
+        return new ResponseEntity<>(bookEntryService.getWishlistByUser(userId),HttpStatus.OK);
+    }
+
     @GetMapping("/get/user/{user}")
     public ResponseEntity<BookEntryResponse> getBookEntriesByUser(@PathVariable User user){
         return new ResponseEntity<>(bookEntryService.getBookEntriesByUser(user),HttpStatus.OK);

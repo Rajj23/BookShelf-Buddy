@@ -66,6 +66,15 @@ public class BookEntryService {
         return BookEntryMapper.toResponse(entry);
     }
 
+    public List<BookEntryResponse> getWishlistByUser(UUID userId) throws ResourceNotFoundException {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+        List<BookEntry> wishListEntries = bookEntryRepo.findByUserAndStatus(user,ReadingStatus.WANT_TO_READ);
+        return wishListEntries.stream()
+                .map(BookEntryMapper::toResponse)
+                .toList();
+    }
+
     public BookEntryResponse getBookEntriesByUser(User user){
         BookEntry entry = bookEntryRepo.findBookEntriesByUser(user);
         return BookEntryMapper.toResponse(entry);
