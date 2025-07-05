@@ -37,14 +37,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+<<<<<<< HEAD
 		</dependency><dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+=======
+>>>>>>> 98331cdb283c616be8014c70ab57ad56ec6bc56c
 		</dependency>
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+<<<<<<< HEAD
 			<version>2.7.0</version>
 		</dependency>
 
@@ -64,6 +68,9 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.6</version>
 			<scope>runtime</scope>
+=======
+			<version>2.5.0</version>
+>>>>>>> 98331cdb283c616be8014c70ab57ad56ec6bc56c
 		</dependency>
 
 		<dependency>
@@ -81,10 +88,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+=======
+>>>>>>> 98331cdb283c616be8014c70ab57ad56ec6bc56c
 	</dependencies>
 
 	<build>
